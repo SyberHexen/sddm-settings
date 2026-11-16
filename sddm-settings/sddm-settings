@@ -1,0 +1,6 @@
+#!/bin/sh
+# Opens the login window settings, as root (asks for the password)
+if [ "$(id -u)" -eq 0 ]; then
+    exec /usr/lib/sddm-settings/sddm-settings.py "$@"
+fi
+exec pkexec /usr/bin/sddm-settings "$@"
